@@ -19,6 +19,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 BASE_URL = "https://riscocloud.com/ELAS/WebUI"
 SITELOGIN_URL = BASE_URL + "/SiteLogin"
+GETCPSTATE_URL = BASE_URL + "/Security/GetCPState"
 
 class Error(Exception):
     pass
@@ -40,6 +41,7 @@ class Risco:
             raise PasswordUsernameMismatch
         if ("Incorrect PIN" in self.__auth_stage_2(pin, site_id).text):
             raise PinSiteIDMismatch
+        self.is_auth = True
 
     def __auth_stage_1(self, username, password):
         data = {
