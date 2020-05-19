@@ -10,7 +10,9 @@ def main():
     riscoapi = Risco()
     pin = 0000
     siteid = 000000
-    riscoapi.authenticate("email", "password", pin, siteid)
+    email = ""
+    password = ""
+    riscoapi.authenticate(email, password, pin, siteid)
 
 if __name__ == "__main__":
     main()
