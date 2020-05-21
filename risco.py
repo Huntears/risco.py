@@ -21,6 +21,7 @@ BASE_URL = "https://riscocloud.com/ELAS/WebUI"
 SITELOGIN_URL = BASE_URL + "/SiteLogin"
 GETCPSTATE_URL = BASE_URL + "/Security/GetCPState"
 GETDECTS_URL = BASE_URL +  "/Detectors/Get"
+OVERVIEW_URL = BASE_URL + "/Overview/Get"
 
 class Error(Exception):
     pass
@@ -53,6 +54,11 @@ class Risco:
             for y in i["detectors"]:
                 detectors.append(y)
         return detectors
+
+    def overview(self):
+        if not self.is_auth:
+            raise NotAuthenticated
+        return self.session.post(OVERVIEW_URL, verify = False).json()
 
     def authenticate(self, username: str, password: str, pin: int, site_id: int) -> int:
         """Authenticate to the RiscoCloud API"""

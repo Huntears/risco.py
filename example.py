@@ -13,7 +13,7 @@ def main():
     email = ""
     password = ""
     riscoapi.authenticate(email, password, pin, siteid)
-    print(riscoapi.get_dects())
+    print(riscoapi.overview())
 
 if __name__ == "__main__":
     main()
