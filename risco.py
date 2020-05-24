@@ -52,7 +52,7 @@ class Risco:
         res = self.session.post(GETDECTS_URL, verify = False).json()
         for i in res["detectors"]["parts"]:
             for y in i["detectors"]:
-                detectors.append(y)
+                detectors.append({"id" : y["id"], "filter" : y["filter"], "bypassed" : y["bypassed"], "name" : y["name"]})
         return detectors
 
     def overview(self):
